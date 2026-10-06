@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía Definitiva de Optimización Core Web Vitals: LCP, INP y CLS al 100% - BytePulse</title>
+  <meta name="description" content="Aprende a optimizar las métricas Core Web Vitals de Google: cómo reducir el LCP por debajo de 2.5s, dominar la nueva métrica INP y eliminar el desplazamiento CLS a 0.">
+  <link rel="canonical" href="https://bytepulse-tech.com/articulos/guia-optimizacion-core-web-vitals.html">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Guía Definitiva de Optimización Core Web Vitals: LCP, INP y CLS al 100%",
+    "description": "Manual técnico de ingeniería web para superar la auditoría de rendimiento de Google y maximizar ingresos en AdSense mediante tiempos de carga instantáneos.",
+    "author": {
+      "@type": "Organization",
+      "name": "Equipo Editorial BytePulse"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "BytePulse",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://bytepulse-tech.com/logo.png"
+      }
+    },
+    "datePublished": "2026-03-25T10:00:00+01:00",
+    "dateModified": "2026-04-05T12:00:00+01:00"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">🛡️</div>
+        Byte<span>Pulse</span>
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+      <nav class="main-nav">
+        <ul class="nav-links">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../herramientas/index.html">Herramientas</a></li>
+          <li><a href="guia-ciberseguridad-gestores-contrasenas.html">Contraseñas</a></li>
+          <li><a href="estrategia-copias-seguridad-regla-3-2-1.html">Backups</a></li>
+          <li><a href="como-proteger-red-wifi-domestica-dns.html">Redes</a></li>
+          <li><a href="../sobre-nosotros.html">Nosotros</a></li>
+          <li><a href="../contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Banner Superior AdSense -->
+  <div class="container">
+    <div class="ad-slot-wrapper">
+      <span class="ad-label">Publicidad</span>
+      <div class="ad-box header-banner" data-ad-slot="header"></div>
+    </div>
+  </div>
+
+  <!-- Contenedor Principal -->
+  <div class="container">
+    <div class="main-layout">
+      
+      <main class="article-content">
+        <div class="breadcrumbs">
+          <a href="../index.html">Inicio</a> &gt; 
+          <a href="../herramientas/index.html">Rendimiento Web</a> &gt; 
+          <span>Core Web Vitals</span>
+        </div>
+
+        <header class="article-header">
+          <h1 class="article-title">Guía Definitiva de Optimización Core Web Vitals: Cómo Obtener 100/100 en PageSpeed</h1>
+          <div class="article-meta">
+            <span>Por Redacción Técnica BytePulse</span>
+            <span>•</span>
+            <time datetime="2026-03-25">25 de marzo de 2026 (Act. 5 de abril de 2026)</time>
+            <span>•</span>
+            <span>Lectura: 12 min</span>
+          </div>
+        </header>
+
+        <div class="table-of-contents">
+          <strong>En esta guía técnica aprenderás:</strong>
+          <ul style="margin: 10px 0 0 20px;">
+            <li><a href="#que-son-cwv">Qué son los Core Web Vitals y cómo impactan en el algoritmo de Google</a></li>
+            <li><a href="#lcp">Dominando el LCP (Largest Contentful Paint) &lt; 2.5s</a></li>
+            <li><a href="#inp">La nueva métrica INP (Interaction to Next Paint) &lt; 200ms</a></li>
+            <li><a href="#cls">Eliminando el CLS (Cumulative Layout Shift) a 0.00</a></li>
+            <li><a href="#adsense-rendimiento">Cómo integrar Google AdSense sin arruinar la velocidad de carga</a></li>
+            <li><a href="#checklist">Checklist de optimización técnica inmediata</a></li>
+          </ul>
+        </div>
+
+        <article class="article-body">
+          <p>
+            Desde la adopción formal de los <strong>Core Web Vitals</strong> como factor de posicionamiento orgánico y experiencia de página, Google mide la calidad de una web evaluando métricas basadas en usuarios reales (datos CrUX). Si tu página tarda en renderizar el contenido principal o los elementos saltan al cargar anuncios, tu tasa de rebote se disparará y el algoritmo degradará tus posiciones en las SERPs.
+          </p>
+          <p>
+            Para un sitio monetizado con Google AdSense, la velocidad es sinónimo de ingresos: páginas que cargan en menos de 1,5 segundos registran hasta un <strong>45% más de impresiones publicitarias visibles</strong> (Viewability) que páginas con retrasos de carga superiores a 4 segundos.
+          </p>
+
+          <div class="ad-slot-wrapper">
+            <span class="ad-label">Publicidad</span>
+            <div class="ad-box in-article-banner" data-ad-slot="inArticle"></div>
+          </div>
+
+          <h2 id="que-son-cwv">1. La Trilogía de Métricas Core Web Vitals</h2>
+          <p>Google clasifica el rendimiento en tres dimensiones independientes:</p>
+          <ul>
+            <li><strong>LCP (Carga):</strong> Mide cuánto tarda en mostrarse en pantalla el bloque de contenido visual más grande (suele ser la imagen principal del artículo o el bloque tipográfico del título). Debe ser menor a <strong>2,5 segundos</strong>.</li>
+            <li><strong>INP (Interactividad):</strong> Reemplazo oficial de FID. Evalúa la latencia total de todas las interacciones de clic, pulsación de teclado o toque táctil a lo largo de toda la sesión de navegación. Debe ser menor a <strong>200 milisegundos</strong>.</li>
+            <li><strong>CLS (Estabilidad Visual):</strong> Cuantifica los movimientos bruscos e inesperados del diseño mientras los elementos se descargan. Debe mantenerse por debajo de <strong>0,1</strong> (idealmente 0,00).</li>
+          </ul>
+
+          <h2 id="lcp">2. Técnicas para Destrozar el LCP (&lt; 1,8 segundos)</h2>
+          <ol>
+            <li>
+              <strong>Priorización de la Imagen Hero con <code>fetchpriority="high"</code>:</strong> Si tu artículo tiene una imagen destacada en el primer pliegue visual, jamás le apliques <code>loading="lazy"</code>. En su lugar, indica al navegador que la descargue con la máxima prioridad:
+              <br><br>
+              <code>&lt;img src="hero.webp" fetchpriority="high" alt="..." width="800" height="450"&gt;</code>
+            </li>
+            <li>
+              <strong>Conversión a Formatos de Próxima Generación (AVIF / WebP):</strong> AVIF ofrece una compresión hasta un 50% superior a JPEG sin pérdida perceptible de calidad visual.
+            </li>
+            <li>
+              <strong>Eliminación del Bloqueo por CSS:</strong> Pon el CSS crítico en línea (inline) en el <code>&lt;head&gt;</code> y difiere las hojas de estilo no esenciales.
+            </li>
+          </ol>
+
+          <h2 id="inp">3. Cómo Dominar el INP en Sitios con Scripts</h2>
+          <p>
+            El INP se degrada cuando el hilo principal de JavaScript está bloqueado por tareas pesadas de procesamiento (Long Tasks &gt; 50ms). Para solucionarlo:
+          </p>
+          <ul>
+            <li><strong>Fragmenta tareas con <code>scheduler.yield()</code> o <code>setTimeout(..., 0)</code>:</strong> Permite que el navegador atienda los eventos de entrada del usuario de inmediato antes de reanudar cómputos largos.</li>
+            <li><strong>Evita listeners de scroll masivos sin <code>passive: true</code>:</strong> Al declarar <code>window.addEventListener('scroll', handler, { passive: true })</code>, permites que el scroll sea fluido y no se quede congelado esperando que JavaScript termine.</li>
+          </ul>
+
+          <h2 id="cls">4. Eliminación Absoluta del CLS al Usar Bloques de Anuncios</h2>
+          <p>
+            Uno de los errores más graves en sitios AdSense es permitir que los contenedores de anuncios tengan altura cero antes de recibir la creatividad publicitaria. Cuando el anuncio se descarga, empuja todo el texto hacia abajo, provocando un CLS devastador:
+          </p>
+
+          <pre style="background: #1e293b; color: #f8fafc; padding: 18px; border-radius: 8px; overflow-x: auto; font-family: monospace; font-size: 0.9rem; line-height: 1.5;">
+/* Regla de Oro para CLS = 0 con AdSense */
+.ad-slot-wrapper {
+  min-height: 280px; /* Reserva el espacio del banner */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8fafc;
+}
+          </pre>
+
+          <p>
+            Reservar el espacio mínimo exacto garantiza que cuando el anuncio de AdSense se inyecte, la posición del texto circundante permanezca fija e inmóvil.
+          </p>
+
+          <h2 id="checklist">5. Checklist de Optimización Inmediata</h2>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin: 20px 0;">
+            <ul style="list-style: none; padding-left: 0;">
+              <li style="margin-bottom: 8px;">✅ <strong>Compresión Gzip / Brotli:</strong> Activada a nivel de servidor web o CDN.</li>
+              <li style="margin-bottom: 8px;">✅ <strong>Atributos Width y Height explícitos:</strong> En todas las etiquetas <code>&lt;img&gt;</code> y <code>&lt;video&gt;</code>.</li>
+              <li style="margin-bottom: 8px;">✅ <strong>Fuentes del Sistema:</strong> Usar tipografías nativas de sistema (system-ui) elimina la descarga de fuentes web y el parpadeo de fuentes invisibles (FOIT).</li>
+              <li style="margin-bottom: 8px;">✅ <strong>Carga asíncrona de AdSense:</strong> El script <code>adsbygoogle.js</code> debe cargarse siempre con <code>async</code>.</li>
+            </ul>
+          </div>
+        </article>
+
+        <div class="ad-slot-wrapper">
+          <span class="ad-label">Publicidad</span>
+          <div class="ad-box footer-banner" data-ad-slot="footer"></div>
+        </div>
+      </main>
+
+      <!-- Barra Lateral -->
+      <aside class="sidebar">
+        <div class="ad-slot-wrapper" style="margin-top: 0;">
+          <span class="ad-label">Publicidad</span>
+          <div class="ad-box sidebar-banner" data-ad-slot="sidebar"></div>
+        </div>
+
+        <div class="widget">
+          <h3 class="widget-title">Artículos Relacionados</h3>
+          <ul class="widget-list">
+            <li><a href="como-elegir-hosting-web-rapido-seguro.html">🚀 Cómo Elegir un Hosting Rápido</a></li>
+            <li><a href="seguridad-web-cabeceras-http-esenciales.html">🛡️ Cabeceras HTTP de Seguridad</a></li>
+            <li><a href="optimizacion-rendimiento-windows-pc.html">⚡ Optimización de Sistemas</a></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <p>&copy; 2026 BytePulse. Todos los derechos reservados.</p>
+      <div>
+        <a href="../politica-de-privacidad.html" style="color: #94a3b8; margin-right: 15px;">Privacidad</a>
+        <a href="../terminos-y-condiciones.html" style="color: #94a3b8;">Términos</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/ads-config.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

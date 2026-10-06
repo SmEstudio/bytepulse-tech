@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Herramientas Gratuitas de Ciberseguridad y Redes - BytePulse</title>
+  <meta name="description" content="Colección de herramientas técnicas gratuitas: generador de claves con entropía, estimador de tiempos de descarga y conversor de unidades de datos.">
+  <link rel="canonical" href="https://bytepulse-tech.com/herramientas/">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">🛡️</div>
+        Byte<span>Pulse</span>
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+      <nav class="main-nav">
+        <ul class="nav-links">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="index.html" class="active">Herramientas</a></li>
+          <li><a href="../articulos/guia-ciberseguridad-gestores-contrasenas.html">Contraseñas</a></li>
+          <li><a href="../articulos/estrategia-copias-seguridad-regla-3-2-1.html">Backups</a></li>
+          <li><a href="../articulos/como-proteger-red-wifi-domestica-dns.html">Redes</a></li>
+          <li><a href="../sobre-nosotros.html">Nosotros</a></li>
+          <li><a href="../contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="ad-slot-wrapper">
+      <span class="ad-label">Publicidad</span>
+      <div class="ad-box header-banner" data-ad-slot="header"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="breadcrumbs" style="margin-top: 15px;">
+      <a href="../index.html">Inicio</a> &gt; <span>Herramientas Técnicas</span>
+    </div>
+  </div>
+
+  <main class="container">
+    <div class="main-layout single-column">
+      
+      <div style="text-align: center; margin-bottom: 35px;">
+        <span class="badge">Utilidades Web Seguras</span>
+        <h1 style="font-size: 2.3rem; color: #0f172a; margin-top: 10px;">Herramientas Gratuitas de Ciberseguridad y Cálculo de Datos</h1>
+        <p style="color: #64748b;">Todas las utilidades se ejecutan 100% de manera local en tu navegador para proteger tu privacidad.</p>
+      </div>
+
+      <!-- Herramienta 1: Generador de Contraseñas -->
+      <section id="herramienta-password" class="calculator-box">
+        <span class="badge">Criptografía en Cliente</span>
+        <h2 class="calculator-title">1. Generador Criptográfico de Contraseñas con Medidor de Entropía</h2>
+        <p style="color: #64748b; margin-bottom: 18px;">
+          Crea claves seguras y conoce cuántos billones de años tardaría un ataque de fuerza bruta moderno en descifrarla.
+        </p>
+
+        <form id="pwd-gen-form" onsubmit="event.preventDefault();">
+          <div style="display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap;">
+            <input type="text" id="pwd-output" class="input-control" readonly style="font-family: var(--font-mono); font-size: 1.15rem; font-weight: 700; color: #0f172a; flex: 1; min-width: 240px; background: #f8fafc;">
+            <button type="button" id="pwd-copy-btn" class="btn btn-primary">Copiar Clave</button>
+            <button type="button" id="pwd-regen-btn" class="btn btn-secondary" style="background: #334155; color: #fff;">🔄 Nueva Clave</button>
+          </div>
+
+          <div style="margin-bottom: 18px;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px;">
+              <span style="font-weight: 600;">Tiempo de Crackeo Estimado:</span>
+              <span id="pwd-crack-time" style="font-weight: 700;">Calculando...</span>
+            </div>
+            <div style="width: 100%; height: 8px; background: #e2e8f0; border-radius: 999px; overflow: hidden;">
+              <div id="pwd-strength-bar" style="width: 80%; height: 100%; background: #10b981;"></div>
+            </div>
+          </div>
+
+          <div style="background: #f1f5f9; padding: 18px; border-radius: var(--radius-sm); margin-bottom: 18px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <label for="pwd-length" style="font-weight: 600; font-size: 0.92rem;">Longitud: <strong id="pwd-length-val" style="color: #2563eb;">20</strong> caracteres</label>
+            </div>
+            <input type="range" id="pwd-length" min="10" max="64" value="20" style="width: 100%; accent-color: #2563eb; cursor: pointer; margin-bottom: 16px;">
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; font-size: 0.9rem;">
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                <input type="checkbox" id="pwd-upper" checked> Mayúsculas (A-Z)
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                <input type="checkbox" id="pwd-lower" checked> Minúsculas (a-z)
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                <input type="checkbox" id="pwd-numbers" checked> Dígitos (0-9)
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                <input type="checkbox" id="pwd-symbols" checked> Símbolos Especiales (!#$*)
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; grid-column: 1 / -1;">
+                <input type="checkbox" id="pwd-no-ambiguous" checked> Excluir caracteres confusos visualmente (1, l, I, 0, O)
+              </label>
+            </div>
+          </div>
+
+          <div class="results-panel">
+            <div class="result-item">
+              <span style="font-weight: 600;">Entropía de la Clave:</span>
+              <span id="pwd-entropy" class="result-value">124 bits</span>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- Bloque AdSense Intermedio -->
+      <div class="ad-slot-wrapper">
+        <span class="ad-label">Publicidad</span>
+        <div class="ad-box in-article-banner" data-ad-slot="inArticle"></div>
+      </div>
+
+      <!-- Herramienta 2: Calculadora de Descargas -->
+      <section id="herramienta-descargas" class="calculator-box">
+        <span class="badge">Redes & Telecomunicaciones</span>
+        <h2 class="calculator-title">2. Calculadora de Tiempo Real de Descarga y Ancho de Banda</h2>
+        <p style="color: #64748b; margin-bottom: 18px;">
+          Calcula el tiempo necesario para descargar o subir un archivo en tu red, teniendo en cuenta la conversión de Megabits a Megabytes y el 10% de overhead del protocolo TCP/IP.
+        </p>
+
+        <form id="speed-calc-form" onsubmit="event.preventDefault();">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+            <div class="form-group">
+              <label for="file-size" style="font-weight: 600; display: block; margin-bottom: 6px; font-size: 0.9rem;">Tamaño del Archivo:</label>
+              <input type="number" id="file-size" class="input-control" value="25" min="1" step="0.5">
+            </div>
+
+            <div class="form-group">
+              <label for="file-size-unit" style="font-weight: 600; display: block; margin-bottom: 6px; font-size: 0.9rem;">Unidad de Tamaño:</label>
+              <select id="file-size-unit" class="input-control">
+                <option value="MB">Megabytes (MB)</option>
+                <option value="GB" selected>Gigabytes (GB)</option>
+                <option value="TB">Terabytes (TB)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="speed-mbps" style="font-weight: 600; display: block; margin-bottom: 6px; font-size: 0.9rem;">Velocidad Contratada (Mbps):</label>
+              <input type="number" id="speed-mbps" class="input-control" value="300" min="1" step="10">
+            </div>
+          </div>
+
+          <div class="results-panel">
+            <div class="result-item">
+              <span style="font-weight: 600;">Velocidad Real de Transferencia:</span>
+              <span id="res-transfer-rate" class="result-value">33.75 MB/s reales</span>
+            </div>
+            <div class="result-item" style="border-top: 2px solid #2563eb; padding-top: 10px;">
+              <span style="font-weight: 600; font-size: 1.05rem;">Tiempo Estimado de Descarga:</span>
+              <span id="res-download-time" style="font-size: 1.25rem; font-weight: 800; color: #2563eb;">12 min 38 seg</span>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- Herramienta 3: Conversor de Unidades de Datos -->
+      <section id="herramienta-unidades" class="calculator-box">
+        <span class="badge">Conversiones de Almacenamiento</span>
+        <h2 class="calculator-title">3. Conversor de Unidades Digitales (Bytes, KB, MB, GB, TB)</h2>
+        <p style="color: #64748b; margin-bottom: 18px;">
+          Convierte de forma instantánea entre magnitudes de almacenamiento binario estándar (múltiplos de 1024).
+        </p>
+
+        <form id="data-unit-form" onsubmit="event.preventDefault();">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 18px;">
+            <div class="form-group">
+              <label for="unit-input-val" style="font-weight: 600; display: block; margin-bottom: 6px; font-size: 0.9rem;">Cantidad Numérica:</label>
+              <input type="number" id="unit-input-val" class="input-control" value="500" min="0" step="any">
+            </div>
+
+            <div class="form-group">
+              <label for="unit-input-type" style="font-weight: 600; display: block; margin-bottom: 6px; font-size: 0.9rem;">Unidad Origen:</label>
+              <select id="unit-input-type" class="input-control">
+                <option value="B">Bytes (B)</option>
+                <option value="KB">Kilobytes (KB)</option>
+                <option value="MB">Megabytes (MB)</option>
+                <option value="GB" selected>Gigabytes (GB)</option>
+                <option value="TB">Terabytes (TB)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="results-panel">
+            <div class="result-item">
+              <span>Bytes (B):</span>
+              <span id="unit-res-b" style="font-family: var(--font-mono); font-weight: 600;">536.870.912.000 B</span>
+            </div>
+            <div class="result-item">
+              <span>Kilobytes (KB):</span>
+              <span id="unit-res-kb" style="font-family: var(--font-mono); font-weight: 600;">524.288.000 KB</span>
+            </div>
+            <div class="result-item">
+              <span>Megabytes (MB):</span>
+              <span id="unit-res-mb" style="font-family: var(--font-mono); font-weight: 600;">512.000 MB</span>
+            </div>
+            <div class="result-item">
+              <span>Gigabytes (GB):</span>
+              <span id="unit-res-gb" style="font-family: var(--font-mono); font-weight: 700; color: #2563eb;">500 GB</span>
+            </div>
+            <div class="result-item">
+              <span>Terabytes (TB):</span>
+              <span id="unit-res-tb" style="font-family: var(--font-mono); font-weight: 700; color: #0f172a;">0,488 TB</span>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- Herramienta 4: Codificador Base64 y Hash SHA-256 -->
+      <section id="herramienta-base64" class="calculator-box" style="margin-top: 30px;">
+        <span class="badge">Cripto & Utilidades</span>
+        <h2 class="calculator-title">4. Codificador / Decodificador Base64 y Hash SHA-256</h2>
+        <p style="color: #64748b; margin-bottom: 18px;">
+          Convierte texto a codificación Base64 (estándar RFC 4648) o genera sumas de verificación criptográficas SHA-256 en tiempo real en tu navegador.
+        </p>
+
+        <form id="b64-form" onsubmit="event.preventDefault();">
+          <div class="form-group">
+            <label for="b64-input" style="font-weight: 600; display: block; margin-bottom: 6px; font-size: 0.9rem;">Texto de Entrada:</label>
+            <textarea id="b64-input" class="code-area" rows="3" placeholder="Escribe o pega aquí la cadena de texto..."></textarea>
+          </div>
+
+          <div style="display: flex; gap: 10px; margin: 12px 0; flex-wrap: wrap;">
+            <button id="btn-b64-encode" type="button" class="btn btn-primary">🔒 Codificar a Base64</button>
+            <button id="btn-b64-decode" type="button" class="btn btn-secondary">🔓 Decodificar de Base64</button>
+            <button id="btn-b64-hash" type="button" class="btn btn-secondary" style="color: #6366f1;">#️⃣ Generar Hash SHA-256</button>
+          </div>
+
+          <div class="form-group" style="margin-top: 15px;">
+            <label for="b64-output" style="font-weight: 600; display: block; margin-bottom: 6px; font-size: 0.9rem;">Resultado:</label>
+            <textarea id="b64-output" class="code-area" rows="3" readonly placeholder="El resultado aparecerá aquí..."></textarea>
+          </div>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <div class="container">
+    <div class="ad-slot-wrapper">
+      <span class="ad-label">Publicidad</span>
+      <div class="ad-box footer-banner" data-ad-slot="footer"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <p>&copy; 2026 BytePulse. Herramientas técnicas de acceso libre y gratuito.</p>
+      <div>
+        <a href="../politica-de-privacidad.html" style="color: #94a3b8; margin-right: 15px;">Privacidad</a>
+        <a href="../terminos-y-condiciones.html" style="color: #94a3b8;">Términos</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/ads-config.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

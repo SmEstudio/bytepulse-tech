@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BytePulse - Ciberseguridad Práctica, Optimización de Software y Herramientas</title>
+  <meta name="description" content="Aprende ciberseguridad, gestión de contraseñas, copias de seguridad 3-2-1 y optimización de sistemas. Herramientas interactivas gratuitas y guías técnicas directas al grano.">
+  <meta name="keywords" content="ciberseguridad, generador de contraseñas, gestor de contraseñas, copia de seguridad 3-2-1, dns cifrado doh, optimizar windows pc, tiempo de descarga calculadora">
+  <link rel="canonical" href="https://bytepulse-tech.com/">
+  
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BytePulse - Ciberseguridad y Software Práctico">
+  <meta property="og:description" content="Protege tus datos digitales, acelera tus equipos y utiliza herramientas de seguridad de código abierto.">
+  <meta property="og:url" content="https://bytepulse-tech.com/">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230f172a' stroke='%236366f1' stroke-width='6'/><text y='70' x='50' text-anchor='middle' font-size='56'>🛡️</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "BytePulse",
+    "url": "https://bytepulse-tech.com/",
+    "description": "Portal divulgativo sobre ciberseguridad para usuarios y empresas, herramientas criptográficas en navegador y optimización tecnológica.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://bytepulse-tech.com/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">🛡️</div>
+        Byte<span>Pulse</span>
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menú de navegación">☰</button>
+      <nav class="main-nav">
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Inicio</a></li>
+          <li><a href="herramientas/index.html">Herramientas</a></li>
+          <li><a href="articulos/guia-ciberseguridad-gestores-contrasenas.html">Contraseñas & 2FA</a></li>
+          <li><a href="articulos/estrategia-copias-seguridad-regla-3-2-1.html">Backups 3-2-1</a></li>
+          <li><a href="articulos/como-proteger-red-wifi-domestica-dns.html">Redes & DNS</a></li>
+          <li><a href="sobre-nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Banner Superior AdSense -->
+  <div class="container">
+    <div class="ad-slot-wrapper">
+      <span class="ad-label">Publicidad</span>
+      <div class="ad-box header-banner" data-ad-slot="header"></div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <span class="badge">Tecnología & Seguridad Digital</span>
+      <h1>Domina la Seguridad Digital y Optimiza tu Entorno Tecnológico</h1>
+      <p>Guías prácticas sin jerga confusa, análisis de software transparente y herramientas criptográficas locales para blindar tu privacidad en la red.</p>
+      <div class="hero-cta">
+        <a href="#herramienta-destacada" class="btn btn-primary">Generar Contraseña Segura</a>
+        <a href="herramientas/index.html" class="btn btn-secondary">Ver Todas las Herramientas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Barra Terminal Developer BytePulse -->
+  <div style="background: #090d16; color: #a5b4fc; padding: 10px 0; font-size: 0.82rem; font-family: var(--font-mono); border-bottom: 1px solid #1e293b;">
+    <div class="container" style="display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+      <span style="display: inline-flex; align-items: center; gap: 6px;"><span style="color: #10b981;">●</span> SYSTEM: <strong style="color: #f1f5f9;">ONLINE</strong></span>
+      <span style="display: inline-flex; align-items: center; gap: 6px;"><span style="color: #06b6d4;">🔒</span> SECURITY: <strong style="color: #67e8f9;">SHA-256 / AES-GCM</strong></span>
+      <span style="display: inline-flex; align-items: center; gap: 6px;"><span style="color: #818cf8;">⚡</span> RENDIMIENTO: <strong style="color: #c7d2fe;">0ms (CLIENT-SIDE)</strong></span>
+      <span style="display: inline-flex; align-items: center; gap: 6px;"><span style="color: #fbbf24;">🛡️</span> TELEMETRÍA: <strong style="color: #fef08a;">0 BYTES ENVIADOS</strong></span>
+    </div>
+  </div>
+
+  <!-- Contenedor Principal con Layout en 2 Columnas -->
+  <main class="container">
+    <div class="main-layout">
+      
+      <div class="content-area">
+        
+        <!-- Herramienta Destacada: Generador & Medidor de Entropía -->
+        <section id="herramienta-destacada" class="calculator-box">
+          <span class="badge">Herramienta Criptográfica Local</span>
+          <h2 class="calculator-title">Generador y Analizador de Contraseñas de Alta Entropía</h2>
+          <p style="color: #64748b; margin-bottom: 20px; font-size: 0.95rem;">
+            Genera contraseñas militarmente robustas utilizando la API criptográfica nativa de tu navegador (<code>window.crypto</code>). Tus datos jamás salen de tu equipo.
+          </p>
+
+          <form id="pwd-gen-form" onsubmit="event.preventDefault();">
+            <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
+              <input type="text" id="pwd-output" class="input-control" readonly style="font-family: var(--font-mono); font-size: 1.15rem; font-weight: 700; letter-spacing: 1px; color: #0f172a; flex: 1; min-width: 240px; background: #f8fafc;">
+              <button type="button" id="pwd-copy-btn" class="btn btn-primary" style="white-space: nowrap;">Copiar Clave</button>
+              <button type="button" id="pwd-regen-btn" class="btn btn-secondary" style="background: #334155; color: #fff; white-space: nowrap;">🔄 Regenerar</button>
+            </div>
+
+            <!-- Barra de Fortaleza -->
+            <div style="margin-bottom: 20px;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px;">
+                <span style="font-weight: 600;">Nivel de Seguridad Criptográfica:</span>
+                <span id="pwd-crack-time" style="font-weight: 700;">Calculando...</span>
+              </div>
+              <div style="width: 100%; height: 8px; background: #e2e8f0; border-radius: 999px; overflow: hidden;">
+                <div id="pwd-strength-bar" style="width: 80%; height: 100%; background: #10b981; transition: width 0.3s ease, background-color 0.3s;"></div>
+              </div>
+            </div>
+
+            <!-- Controles y Parámetros -->
+            <div style="background: #f1f5f9; padding: 18px; border-radius: var(--radius-sm); margin-bottom: 20px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <label for="pwd-length" style="font-weight: 600; font-size: 0.92rem;">Longitud de la Contraseña: <strong id="pwd-length-val" style="color: #2563eb;">18</strong> caracteres</label>
+              </div>
+              <input type="range" id="pwd-length" min="10" max="48" value="18" style="width: 100%; accent-color: #2563eb; cursor: pointer; margin-bottom: 16px;">
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; font-size: 0.9rem;">
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                  <input type="checkbox" id="pwd-upper" checked> Letras Mayúsculas (A-Z)
+                </label>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                  <input type="checkbox" id="pwd-lower" checked> Letras Minúsculas (a-z)
+                </label>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                  <input type="checkbox" id="pwd-numbers" checked> Dígitos Numéricos (0-9)
+                </label>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                  <input type="checkbox" id="pwd-symbols" checked> Símbolos Especiales (!@#$)
+                </label>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; grid-column: 1 / -1;">
+                  <input type="checkbox" id="pwd-no-ambiguous" checked> Excluir caracteres ambiguos parecidos (1, l, I, 0, O)
+                </label>
+              </div>
+            </div>
+
+            <!-- Panel de Entropía -->
+            <div class="results-panel" style="margin-top: 0;">
+              <div class="result-item">
+                <span style="font-weight: 600;">Entropía de Shannon:</span>
+                <span id="pwd-entropy" class="result-value">110 bits</span>
+              </div>
+              <div class="result-item">
+                <span style="font-weight: 600;">Recomendación NIST SP 800-63B:</span>
+                <span style="color: #059669; font-weight: 700;">Cumple ampliamente el estándar bancario y militar</span>
+              </div>
+            </div>
+          </form>
+        </section>
+
+        <!-- Bloque AdSense Intermedio -->
+        <div class="ad-slot-wrapper">
+          <span class="ad-label">Publicidad</span>
+          <div class="ad-box in-article-banner" data-ad-slot="inArticle"></div>
+        </div>
+
+        <!-- Sección de Artículos Clave -->
+        <section>
+          <div style="margin-bottom: 24px;">
+            <h2 style="font-size: 1.75rem; color: #0f172a; font-weight: 800;">Artículos y Guías Prácticas de Tecnología</h2>
+            <p style="color: #64748b;">Aprende a proteger tus dispositivos, asegurar tu red y optimizar tus flujos digitales.</p>
+          </div>
+
+          <div class="cards-grid">
+            <!-- 1 -->
+            <article class="card">
+              <span class="card-tag">Ciberseguridad</span>
+              <h3><a href="articulos/guia-ciberseguridad-gestores-contrasenas.html">Por Qué Dejar de Reutilizar Contraseñas y Cómo Configurar un Gestor Seguro</a></h3>
+              <p>Descubre el cifrado Zero-Knowledge AES-256, la diferencia entre llaves FIDO2 y SMS 2FA, y cómo migrar a un gestor de claves en 15 minutos.</p>
+              <div class="card-meta">
+                <span>Equipo BytePulse</span>
+                <span>Lectura: 8 min</span>
+              </div>
+            </article>
+
+            <!-- 2 -->
+            <article class="card">
+              <span class="card-tag">Redes & Privacidad</span>
+              <h3><a href="articulos/guia-vpns-seguridad-protocolo-wireguard.html">Guía Definitiva de VPNs: Mitos, Realidades y el Salto Cuántico de WireGuard</a></h3>
+              <p>Cuándo una VPN protege realmente tu privacidad y cuándo es puro humo publicitario. Análisis técnico de WireGuard vs OpenVPN y auditorías No-Logs.</p>
+              <div class="card-meta">
+                <span>Equipo BytePulse</span>
+                <span>Lectura: 11 min</span>
+              </div>
+            </article>
+
+            <!-- 3 -->
+            <article class="card">
+              <span class="card-tag">Almacenamiento & Respaldos</span>
+              <h3><a href="articulos/estrategia-copias-seguridad-regla-3-2-1.html">La Regla 3-2-1 de Copias de Seguridad: Inmunidad contra el Ransomware</a></h3>
+              <p>Aprende a estructurar tus backups con almacenamiento local, medios inmutables y almacenamiento en la nube cifrada sin pagar de más.</p>
+              <div class="card-meta">
+                <span>Equipo BytePulse</span>
+                <span>Lectura: 9 min</span>
+              </div>
+            </article>
+
+            <!-- 4 -->
+            <article class="card">
+              <span class="card-tag">Hardware & Nube</span>
+              <h3><a href="articulos/almacenamiento-nube-vs-nas-domestico.html">Almacenamiento en la Nube vs Servidor NAS Doméstico: Comparativa Real</a></h3>
+              <p>¿Google Drive, iCloud o un servidor NAS propio? Analizamos costes a 5 años (TCO), velocidad en red local Gigabit y configuración de redundancia RAID.</p>
+              <div class="card-meta">
+                <span>Equipo BytePulse</span>
+                <span>Lectura: 11 min</span>
+              </div>
+            </article>
+
+            <!-- 5 -->
+            <article class="card">
+              <span class="card-tag">Redes & DNS</span>
+              <h3><a href="articulos/como-proteger-red-wifi-domestica-dns.html">Cómo Blindar tu Red WiFi y Configurar DNS Cifrado (DoH)</a></h3>
+              <p>Desactiva WPS, segmenta tus dispositivos inteligentes (IoT) en una VLAN de invitados y bloquea publicidad maliciosa y malware en el router.</p>
+              <div class="card-meta">
+                <span>Equipo BytePulse</span>
+                <span>Lectura: 8 min</span>
+              </div>
+            </article>
+
+            <!-- 6 -->
+            <article class="card">
+              <span class="card-tag">Inteligencia Artificial</span>
+              <h3><a href="articulos/ejecutar-modelos-ia-local-ollama.html">Cómo Ejecutar Modelos de IA en Local con Ollama y LM Studio</a></h3>
+              <p>Ejecuta Llama 3, Mistral y Gemma directamente en tu PC. Privacidad total con cuantización GGUF, cero costes de suscripción y funcionamiento offline.</p>
+              <div class="card-meta">
+                <span>Equipo BytePulse</span>
+                <span>Lectura: 12 min</span>
+              </div>
+            </article>
+
+            <!-- 7 -->
+            <article class="card">
+              <span class="card-tag">Productividad & Software</span>
+              <h3><a href="articulos/guia-herramientas-ia-productividad-diaria.html">Guía de Herramientas de Inteligencia Artificial para Acelerar tu Trabajo</a></h3>
+              <p>Optimiza tus tareas rutinarias, automatización de código y análisis de documentos respetando la privacidad de tus datos corporativos.</p>
+              <div class="card-meta">
+                <span>Equipo BytePulse</span>
+                <span>Lectura: 9 min</span>
+              </div>
+            </article>
+
+            <!-- 8 -->
+            <article class="card">
+              <span class="card-tag">Automatización</span>
+              <h3><a href="articulos/automatizacion-tareas-scripts-python.html">Automatización de Tareas con Python: Scripts Listos para Ahorrar Horas</a></h3>
+              <p>Renombrado masivo de archivos, consolidación de reportes de datos con Pandas y programación de tareas desatendidas con cron y task scheduler.</p>
+              <div class="card-meta">
+                <span>Equipo BytePulse</span>
+                <span>Lectura: 11 min</span>
+              </div>
+            </article>
+
+            <!-- 9 -->
+            <article class="card">
+              <span class="card-tag">Rendimiento de Sistemas</span>
+              <h3><a href="articulos/optimizacion-rendimiento-windows-pc.html">Optimización de Windows y PC sin Programas Milagro ni Malware</a></h3>
+              <p>Mantenimiento preventivo, activación de comandos TRIM en unidades NVMe/SSD y gestión de procesos en segundo plano con rigor técnico.</p>
+              <div class="card-meta">
+                <span>Equipo BytePulse</span>
+                <span>Lectura: 7 min</span>
+              </div>
+            </article>
+
+            <!-- 10 -->
+            <article class="card">
+              <span class="card-tag">Infraestructura Web</span>
+              <h3><a href="articulos/como-elegir-hosting-web-rapido-seguro.html">Cómo Elegir un Hosting Web Rápido y Fiable: Comparativa Cloud vs VPS</a></h3>
+              <p>Aprende qué especificaciones técnicas garantizan un TTFB inferior a 150ms, discos NVMe PCIe 4.0, protocolos HTTP/3 y resiliencia ante picos de tráfico.</p>
+              <div class="card-meta">
+                <span>Equipo BytePulse</span>
+                <span>Lectura: 10 min</span>
+              </div>
+            </article>
+
+            <!-- 11 -->
+            <article class="card">
+              <span class="card-tag">Rendimiento Web</span>
+              <h3><a href="articulos/guia-optimizacion-core-web-vitals.html">Guía Definitiva de Core Web Vitals: LCP, INP y CLS al 100%</a></h3>
+              <p>Manual técnico de optimización de rendimiento web para superar la auditoría de Google y maximizar ingresos en AdSense sin perjudicar la velocidad.</p>
+              <div class="card-meta">
+                <span>Equipo BytePulse</span>
+                <span>Lectura: 12 min</span>
+              </div>
+            </article>
+
+            <!-- 12 -->
+            <article class="card">
+              <span class="card-tag">Seguridad Web</span>
+              <h3><a href="articulos/seguridad-web-cabeceras-http-esenciales.html">Cabeceras HTTP de Seguridad Esenciales: HSTS, CSP y Permissions-Policy</a></h3>
+              <p>Protege tu servidor contra ataques XSS, Clickjacking y robo de credenciales configurando cabeceras de respuesta y obteniendo calificación A+.</p>
+              <div class="card-meta">
+                <span>Equipo BytePulse</span>
+                <span>Lectura: 10 min</span>
+              </div>
+            </article>
+
+            <!-- 13 -->
+            <article class="card">
+              <span class="card-tag">Control de Versiones</span>
+              <h3><a href="articulos/guia-git-comandos-avanzados-y-buenas-practicas.html">Git Avanzado: Rebase Interactivo, Bisect, Reflog y Buenas Prácticas</a></h3>
+              <p>Domina las herramientas avanzadas de Git: reescribe historiales limpios con squash, caza bugs y protege ramas.</p>
+              <div class="card-meta">
+                <span>Por Alejandro Fuentes</span>
+                <span>Lectura: 10 min</span>
+              </div>
+            </article>
+
+            <!-- 14 -->
+            <article class="card">
+              <span class="card-tag">Contenedores</span>
+              <h3><a href="articulos/docker-para-principiantes-guia-paso-a-paso.html">Docker para Principiantes: Guía Práctica de Contenedores y Compose</a></h3>
+              <p>Aprende Docker desde cero con ejemplos reales: Dockerfile eficiente, redes, volúmenes de datos y orquestación.</p>
+              <div class="card-meta">
+                <span>Por Alejandro Fuentes</span>
+                <span>Lectura: 9 min</span>
+              </div>
+            </article>
+
+            <!-- 15 -->
+            <article class="card">
+              <span class="card-tag">Seguridad en APIs</span>
+              <h3><a href="articulos/como-proteger-api-rest-autenticacion-jwt-y-oauth2.html">Seguridad en APIs REST: Autenticación con JWT y Rate Limiting</a></h3>
+              <p>Patrones de diseño de ciberseguridad: rotación de tokens en cookies HttpOnly y protección contra ataques XSS y CSRF.</p>
+              <div class="card-meta">
+                <span>Por Sara Domínguez</span>
+                <span>Lectura: 9 min</span>
+              </div>
+            </article>
+
+            <!-- 16 -->
+            <article class="card">
+              <span class="card-tag">Bases de Datos</span>
+              <h3><a href="articulos/bases-de-datos-sql-vs-nosql-cuando-usar-cada-una.html">Bases de Datos SQL vs NoSQL: Guía de Arquitectura de Datos</a></h3>
+              <p>Garantías ACID relacionales vs escalabilidad horizontal polimórfica: PostgreSQL vs MongoDB vs Redis.</p>
+              <div class="card-meta">
+                <span>Por Alejandro Fuentes</span>
+                <span>Lectura: 8 min</span>
+              </div>
+            </article>
+          </div>
+
+          <!-- Caja de Suscripción a la Newsletter -->
+          <div class="newsletter-box">
+            <h3>📬 Boletín Semanal para Desarrolladores</h3>
+            <p>Recibe los mejores recursos de ingeniería web, tutoriales de arquitectura de software y análisis de herramientas sin spam.</p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Introduce tu correo electrónico..." required>
+              <button type="submit">Suscribirme Gratis</button>
+            </form>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Barra Lateral (Sidebar) -->
+      <aside class="sidebar">
+        
+        <div class="ad-slot-wrapper" style="margin-top: 0;">
+          <span class="ad-label">Publicidad</span>
+          <div class="ad-box sidebar-banner" data-ad-slot="sidebar"></div>
+        </div>
+
+        <div class="widget">
+          <h3 class="widget-title">Herramientas en Línea</h3>
+          <ul class="widget-list">
+            <li><a href="herramientas/index.html#herramienta-password">🔑 Generador de Claves Seguras</a></li>
+            <li><a href="herramientas/index.html#herramienta-descargas">⏱️ Calculadora de Tiempo de Descarga</a></li>
+            <li><a href="herramientas/index.html#herramienta-unidades">💾 Conversor de Bytes, MB, GB, TB</a></li>
+          </ul>
+        </div>
+
+        <div class="widget" style="background: #f8fafc; border-color: #e2e8f0;">
+          <h3 class="widget-title" style="color: #0f172a;">🔒 Filosofía de Privacidad</h3>
+          <p style="font-size: 0.88rem; color: #64748b; line-height: 1.55;">
+            Nuestras herramientas funcionan al 100% en el motor JavaScript de tu navegador. Ninguna clave, texto o dato numérico es enviado ni procesado en servidores externos. Cero telemetría invasiva.
+          </p>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Banner Inferior AdSense -->
+  <div class="container">
+    <div class="ad-slot-wrapper">
+      <span class="ad-label">Publicidad</span>
+      <div class="ad-box footer-banner" data-ad-slot="footer"></div>
+    </div>
+  </div>
+
+  <!-- Pie de Página -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>🛡️ BytePulse</h3>
+          <p>Portal educativo de ciberseguridad, arquitectura de redes, optimización informática y privacidad digital.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Herramientas</h4>
+          <ul>
+            <li><a href="index.html#herramienta-destacada">Generador de Contraseñas</a></li>
+            <li><a href="herramientas/index.html#herramienta-descargas">Velocidad de Transferencia</a></li>
+            <li><a href="herramientas/index.html#herramienta-unidades">Conversor de Almacenamiento</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal & E-E-A-T</h4>
+          <ul>
+            <li><a href="politica-de-privacidad.html">Política de Privacidad</a></li>
+            <li><a href="terminos-y-condiciones.html">Términos de Uso</a></li>
+            <li><a href="politica-de-cookies.html">Política de Cookies</a></li>
+            <li><a href="sobre-nosotros.html">Quiénes Somos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <p style="color: #ffffff; font-weight: 600;">contacto@bytepulse-tech.com</p>
+          <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 8px;">Divulgación independiente financiada por Google AdSense.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 BytePulse. Todos los derechos reservados.</p>
+        <p>Monetización ética y transparente compatible con Google AdSense.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cookie Banner -->
+  <div id="cookie-banner" class="cookie-banner">
+    <div class="cookie-content">
+      <div class="cookie-text">
+        Utilizamos cookies analíticas y publicitarias de Google AdSense para sostener este portal de acceso libre y gratuito. Consulta nuestra <a href="politica-de-cookies.html" style="color: #93c5fd; text-decoration: underline;">Política de Cookies</a>.
+      </div>
+      <div class="cookie-actions">
+        <button id="cookie-accept" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.88rem;">Aceptar</button>
+        <button id="cookie-decline" class="btn" style="padding: 8px 18px; font-size: 0.88rem; background: #334155; color: #fff;">Solo Técnicas</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/ads-config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

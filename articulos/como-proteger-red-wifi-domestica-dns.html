@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cómo Proteger tu Red WiFi y Configurar DNS Cifrado (DoH) - BytePulse</title>
+  <meta name="description" content="Guía paso a paso para asegurar el router de tu hogar: desactivar WPS, segmentar dispositivos IoT, activar cifrado WPA3 y configurar DNS cifrado con bloqueo de telemetría y anuncios.">
+  <link rel="canonical" href="https://bytepulse-tech.com/articulos/como-proteger-red-wifi-domestica-dns.html">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Cómo Proteger tu Red WiFi Doméstica y Configurar DNS Cifrado (DoH)",
+    "description": "Manual de securización perimetral de routers domésticos, aislamiento de redes para electrodomésticos inteligentes y privacidad DNS.",
+    "author": {
+      "@type": "Organization",
+      "name": "Equipo Editorial BytePulse"
+    },
+    "datePublished": "2026-03-24",
+    "dateModified": "2026-04-03"
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">🛡️</div>
+        Byte<span>Pulse</span>
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+      <nav class="main-nav">
+        <ul class="nav-links">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../herramientas/index.html">Herramientas</a></li>
+          <li><a href="guia-ciberseguridad-gestores-contrasenas.html">Contraseñas</a></li>
+          <li><a href="estrategia-copias-seguridad-regla-3-2-1.html">Backups</a></li>
+          <li><a href="como-proteger-red-wifi-domestica-dns.html" class="active">Redes</a></li>
+          <li><a href="../sobre-nosotros.html">Nosotros</a></li>
+          <li><a href="../contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="ad-slot-wrapper">
+      <span class="ad-label">Publicidad</span>
+      <div class="ad-box header-banner" data-ad-slot="header"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="main-layout">
+      
+      <main class="article-content">
+        <div class="breadcrumbs">
+          <a href="../index.html">Inicio</a> &gt; 
+          <a href="../herramientas/index.html">Redes</a> &gt; 
+          <span>Seguridad WiFi</span>
+        </div>
+
+        <header class="article-header">
+          <h1 class="article-title">Cómo Proteger tu Red WiFi Doméstica y Configurar DNS Cifrado (DoH / DoT) sin Perder Velocidad</h1>
+          <div class="article-meta">
+            <span>Por Redacción Técnica BytePulse</span>
+            <span>•</span>
+            <time datetime="2026-03-24">24 de marzo de 2026</time>
+            <span>•</span>
+            <span>Lectura: 8 min</span>
+          </div>
+        </header>
+
+        <div class="table-of-contents">
+          <strong>Puntos clave del manual de redes:</strong>
+          <ul style="margin: 10px 0 0 20px;">
+            <li><a href="#vulnerabilidades-router">Vulnerabilidades de fábrica en routers de operadoras</a></li>
+            <li><a href="#wpa3">WPA2 vs WPA3: Resistencia al ataque de desautenticación</a></li>
+            <li><a href="#wps-peligro">Por qué debes apagar WPS de inmediato</a></li>
+            <li><a href="#segmentacion-iot">Segmentación de red: Aislar bombillas y Smart TVs en una red de invitados</a></li>
+            <li><a href="#dns-cifrado">DNS sobre HTTPS (DoH): Detén el espionaje de tu proveedor (ISP)</a></li>
+            <li><a href="#mejores-proveedores-dns">Los mejores servidores DNS seguros (Cloudflare, Quad9, NextDNS)</a></li>
+          </ul>
+        </div>
+
+        <article class="article-body">
+          <p>
+            El router inalámbrico es la puerta de entrada de todos los dispositivos de tu hogar u oficina: ordenadores de trabajo, teléfonos personales, cámaras de seguridad, televisores inteligentes e impresoras. A pesar de su rol crítico, la inmensa mayoría de usuarios nunca modifica la configuración original proporcionada por su compañía telefónica, dejando abiertas puertas traseras de explotación trivial.
+          </p>
+
+          <h2 id="vulnerabilidades-router">1. Modifica las Credenciales de Administración del Router</h2>
+          <p>
+            El error más elemental es confundir la contraseña del WiFi (la clave que compartes a tus visitas) con la <strong>contraseña de administración del router</strong>. En la mayoría de routers comerciales, el acceso al panel interno (habitualmente en <code>192.168.1.1</code> o <code>192.168.0.1</code>) sigue configurado con combinaciones de fábrica como <code>admin/admin</code> o <code>1234/1234</code>.
+          </p>
+          <p>
+            Cualquier dispositivo comprometido en tu red local o una página web maliciosa que ejecute un ataque de <em>DNS Rebinding</em> puede tomar el control del router y cambiar tus servidores DNS hacia servidores controlados por ciberdelincuentes. Accede al panel y reemplaza de inmediato la clave de acceso de administrador por una cadena segura de al menos 16 caracteres.
+          </p>
+
+          <div class="ad-slot-wrapper">
+            <span class="ad-label">Publicidad</span>
+            <div class="ad-box in-article-banner" data-ad-slot="inArticle"></div>
+          </div>
+
+          <h2 id="wpa3">2. Protocolo de Cifrado: Migra a WPA3 o WPA2-AES</h2>
+          <p>
+            El protocolo <strong>WPA3-Personal</strong> (basado en el algoritmo SAE - Simultaneous Authentication of Equals) sustituye el antiguo intercambio de claves de 4 vías de WPA2, neutralizando de raíz los ataques de fuerza bruta offline basados en capturas de apretón de manos (handshakes).
+          </p>
+          <p>
+            Si tienes dispositivos antiguos en el hogar que no soportan WPA3 nativo, selecciona el modo mixto <strong>WPA2/WPA3 Transición</strong>, y verifica que el cifrado seleccionado sea siempre <strong>AES</strong> (nunca TKIP, el cual está matemáticamente roto).
+          </p>
+
+          <h2 id="wps-peligro">3. Desactiva el Botón WPS (Wi-Fi Protected Setup)</h2>
+          <p>
+            WPS fue creado para facilitar la conexión rápida pulsando un botón físico o introduciendo un código PIN de 8 dígitos. En 2011, el investigador Stefan Viehböck demostró que el diseño de WPS valida el PIN en dos mitades independientes (4 y 4 dígitos), permitiendo adivinar el código mediante ataques como <em>Reaver</em> o <em>Pixie Dust</em> en menos de 10 minutos.
+          </p>
+          <p>
+            <strong>Acción obligatoria:</strong> Entra en la configuración inalámbrica de tu router y desactiva por completo la función WPS.
+          </p>
+
+          <h2 id="segmentacion-iot">4. Segmenta tus Dispositivos IoT en una Red de Invitados</h2>
+          <p>
+            Los dispositivos domésticos inteligentes (enchufes inteligentes, aspiradoras robot, altavoces conectados) casi nunca reciben parches de seguridad de sus fabricantes y son objetivos favoritos para crear redes zombi (botnets Mirai).
+          </p>
+          <p>
+            Para mitigar este riesgo:
+          </p>
+          <ul>
+            <li>Habilita la red <strong>WiFi de Invitados (Guest Network)</strong> en tu router.</li>
+            <li>Conecta a esa red todos los dispositivos inteligentes y electrodomésticos.</li>
+            <li>Activa la casilla <strong>Aislamiento AP (Client Isolation)</strong> para evitar que un dispositivo infectado pueda escanear o enviar tráfico a los ordenadores donde gestionas tus cuentas bancarias y datos de trabajo.</li>
+          </ul>
+
+          <h2 id="dns-cifrado">5. ¿Qué es DNS Cifrado (DoH / DoT) y por qué lo necesitas?</h2>
+          <p>
+            El protocolo DNS tradicional opera sobre el puerto 53 en texto plano sin cifrar. Cada vez que navegas a un sitio web, tu proveedor de internet (ISP) o cualquier interceptor en una red WiFi pública sabe con exactitud a qué dominio accedes, permitiéndoles monitorizar tus hábitos de navegación, crear perfiles de publicidad o bloquear páginas de forma arbitraria.
+          </p>
+          <p>
+            El <strong>DNS sobre HTTPS (DoH)</strong> encapsula tus consultas DNS dentro de tráfico TLS cifrado estándar (puerto 443), haciéndolas indistinguibles del tráfico web seguro convencional.
+          </p>
+
+          <h2 id="mejores-proveedores-dns">Servidores DNS Seguros Recomendados</h2>
+          <ul>
+            <li><strong>Cloudflare (1.1.1.1 / 1.1.1.2):</strong> El más rápido del mundo. La variante <code>1.1.1.2</code> incluye filtrado automático y en tiempo real de dominios asociados a malware y phishing.</li>
+            <li><strong>Quad9 (9.9.9.9):</strong> Fundación sin ánimo de lucro suiza centrada en la ciberseguridad y la privacidad que bloquea activamente amenazas de ciberataques cotejadas con más de 20 fuentes de inteligencia de amenazas.</li>
+            <li><strong>NextDNS:</strong> Permite crear un perfil personalizado para bloquear publicidad intrusiva, rastreadores y telemetría de Windows directamente a nivel de red para todos los dispositivos de la casa.</li>
+          </ul>
+
+          <h2>Resumen</h2>
+          <p>
+            Dedicar 20 minutos a apagar WPS, cambiar la clave de acceso del router y activar DNS cifrado en tu sistema operativo o navegador transformará tu red doméstica de ser un blanco fácil a convertirse en una fortaleza digital resiliente.
+          </p>
+        </article>
+
+        <!-- Bloque AdSense Final de Artículo -->
+        <div class="ad-slot-wrapper">
+          <span class="ad-label">Publicidad</span>
+          <div class="ad-box footer-banner" data-ad-slot="footer"></div>
+        </div>
+
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 24px; margin-top: 40px; display: flex; gap: 20px; align-items: center;">
+          <div style="font-size: 3rem; background: #eff6ff; padding: 10px; border-radius: 50%;">📡</div>
+          <div>
+            <h4 style="color: #0f172a; margin-bottom: 4px;">Auditoría de Redes por BytePulse</h4>
+            <p style="font-size: 0.9rem; color: #64748b; line-height: 1.5;">
+              La seguridad en capas es la doctrina central de la defensa informática. Proteger el perímetro inalámbrico minimiza vectores de entrada para actores maliciosos.
+            </p>
+          </div>
+        </div>
+
+      </main>
+
+      <aside class="sidebar">
+        <div class="ad-slot-wrapper" style="margin-top: 0;">
+          <span class="ad-label">Publicidad</span>
+          <div class="ad-box sidebar-banner" data-ad-slot="sidebar"></div>
+        </div>
+
+        <div class="widget">
+          <h3 class="widget-title">Calculadoras de Red</h3>
+          <ul class="widget-list">
+            <li><a href="../herramientas/index.html#herramienta-descargas">⏱️ Test y Estimación de Ancho de Banda</a></li>
+            <li><a href="../herramientas/index.html#herramienta-password">🔑 Generador de Claves WPA3</a></li>
+            <li><a href="../herramientas/index.html#herramienta-unidades">💾 Conversor MB/s a Mbps</a></li>
+          </ul>
+        </div>
+
+        <div class="widget">
+          <h3 class="widget-title">Artículos Relacionados</h3>
+          <ul class="widget-list">
+            <li><a href="guia-ciberseguridad-gestores-contrasenas.html">Gestores de Claves y Llaves FIDO2</a></li>
+            <li><a href="estrategia-copias-seguridad-regla-3-2-1.html">Backups Inmutables 3-2-1</a></li>
+            <li><a href="optimizacion-rendimiento-windows-pc.html">Optimización de Sistemas PC</a></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>🛡️ BytePulse</h3>
+          <p>Portal educativo de ciberseguridad, arquitectura de redes, optimización informática y privacidad digital.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Herramientas</h4>
+          <ul>
+            <li><a href="../index.html#herramienta-destacada">Generador de Contraseñas</a></li>
+            <li><a href="../herramientas/index.html#herramienta-descargas">Velocidad de Transferencia</a></li>
+            <li><a href="../herramientas/index.html#herramienta-unidades">Conversor de Almacenamiento</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="../politica-de-privacidad.html">Privacidad</a></li>
+            <li><a href="../terminos-y-condiciones.html">Términos de Uso</a></li>
+            <li><a href="../politica-de-cookies.html">Cookies</a></li>
+            <li><a href="../sobre-nosotros.html">Quiénes Somos</a></li>
+            <li><a href="../contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <p style="color: #ffffff; font-weight: 600;">contacto@bytepulse-tech.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 BytePulse. Todos los derechos reservados.</p>
+        <p>Monetización responsable compatible con Google AdSense.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/ads-config.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

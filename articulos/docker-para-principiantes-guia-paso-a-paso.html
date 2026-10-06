@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docker para Principiantes: Guía Práctica de Contenedores y Compose - BytePulse</title>
+  <meta name="description" content="Aprende Docker desde cero con ejemplos reales: diferencias con máquinas virtuales, creación de Dockerfiles eficientes, volúmenes de datos y docker-compose.">
+  <link rel="canonical" href="https://bytepulse-tech.com/articulos/docker-para-principiantes-guia-paso-a-paso.html">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Docker para Principiantes: Guía Paso a Paso de Contenerización",
+    "description": "Tutorial integral de Docker para desarrolladores: sintaxis de Dockerfile, comandos de terminal y orquestación ligera con docker-compose.",
+    "author": {
+      "@type": "Person",
+      "name": "Alejandro S. Fuentes"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "BytePulse"
+    },
+    "datePublished": "2026-03-29T10:00:00+01:00",
+    "dateModified": "2026-04-04T16:00:00+01:00"
+  }
+  </script>
+</head>
+<body>
+
+  <div id="reading-progress"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">🛡️</div>`n        Byte<span>Pulse</span>
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+      <nav class="main-nav">
+        <ul class="nav-links">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../herramientas/index.html">Herramientas</a></li>
+          <li><a href="guia-optimizacion-core-web-vitals.html">Core Web Vitals</a></li>
+          <li><a href="seguridad-web-cabeceras-http-esenciales.html">Seguridad Web</a></li>
+          <li><a href="como-elegir-hosting-web-rapido-seguro.html">Hosting</a></li>
+          <li><a href="../sobre-nosotros.html">Nosotros</a></li>
+          <li><a href="../contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="ad-slot-wrapper">
+      <span class="ad-label">Publicidad</span>
+      <div class="ad-box header-banner" data-ad-slot="header"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="main-layout">
+      
+      <main class="article-content">
+        <div class="breadcrumbs">
+          <a href="../index.html">Inicio</a> &gt; 
+          <a href="como-elegir-hosting-web-rapido-seguro.html">DevOps & Cloud</a> &gt; 
+          <span>Docker para Principiantes</span>
+        </div>
+
+        <header class="article-header">
+          <h1 class="article-title">Docker para Principiantes: Cómo Desplegar Aplicaciones en Contenedores sin Morir en el Intento</h1>
+          <div class="article-meta">
+            <span>Por Alejandro S. Fuentes (DevOps & Web)</span>
+            <span>•</span>
+            <time datetime="2026-04-04">4 de abril de 2026</time>
+            <span>•</span>
+            <span>Lectura: 9 min</span>
+          </div>
+        </header>
+
+        <!-- Infografía Visual SVG -->
+        <div class="article-infographic">
+          <svg viewBox="0 0 700 200" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="700" height="200" fill="#f8fafc" rx="10"/>
+            <!-- VM -->
+            <rect x="50" y="30" width="280" height="140" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" rx="8"/>
+            <text x="190" y="60" font-family="system-ui" font-size="15" font-weight="bold" fill="#0f172a" text-anchor="middle">🖥️ Máquina Virtual Clásica</text>
+            <text x="70" y="90" font-family="system-ui" font-size="12" fill="#64748b">• Sistema Operativo Invitado completo (GBs)</text>
+            <text x="70" y="115" font-family="system-ui" font-size="12" fill="#64748b">• Arranque en minutos</text>
+            <text x="70" y="140" font-family="system-ui" font-size="12" fill="#ef4444" font-weight="600">• Alto consumo de RAM y CPU</text>
+
+            <!-- Contenedor -->
+            <rect x="370" y="30" width="280" height="140" fill="#ffffff" stroke="#6366f1" stroke-width="2" rx="8"/>
+            <text x="510" y="60" font-family="system-ui" font-size="15" font-weight="bold" fill="#4338ca" text-anchor="middle">🐳 Contenedor Docker</text>
+            <text x="390" y="90" font-family="system-ui" font-size="12" fill="#334155">• Comparte el Kernel del host (MBs)</text>
+            <text x="390" y="115" font-family="system-ui" font-size="12" fill="#334155">• Arranque en milisegundos</text>
+            <text x="390" y="140" font-family="system-ui" font-size="12" fill="#10b981" font-weight="600">• Aislamiento ligero y portable</text>
+          </svg>
+          <div class="article-infographic-caption">Figura: Arquitectura de virtualización pesada (Hipervisor) vs Contenerización ligera a nivel de proceso.</div>
+        </div>
+
+        <div class="article-body">
+          <p>La infame frase <em>«en mi máquina sí funciona»</em> ha sido históricamente la pesadilla de cualquier equipo de desarrollo. Diferencias sutiles de versiones de librerías, dependencias del sistema operativo o variables de entorno provocaban fallos al pasar código a producción. Docker soluciona este problema empaquetando el código junto a todas sus dependencias exactas en un contenedor estandarizado.</p>
+
+          <div class="ad-slot-wrapper">
+            <span class="ad-label">Publicidad</span>
+            <div class="ad-box in-article-banner" data-ad-slot="inArticle"></div>
+          </div>
+
+          <h2>1. Escribiendo tu Primer Dockerfile</h2>
+          <p>Un Dockerfile es la receta paso a paso para construir la imagen de tu aplicación:</p>
+          <pre><code># Usar imagen ligera de Node.js
+FROM node:20-alpine
+
+# Definir directorio de trabajo
+WORKDIR /app
+
+# Copiar manifiestos e instalar dependencias
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Copiar código fuente y exponer puerto
+COPY . .
+EXPOSE 3000
+
+# Comando de ejecución
+CMD ["node", "server.js"]</code></pre>
+
+          <h2>2. Orquestación con docker-compose.yml</h2>
+          <p>Para levantar una aplicación web junto con su base de datos (por ejemplo, Postgres o Redis) sin configurar nada a mano:</p>
+          <pre><code>version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_HOST=db
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_PASSWORD: secret_password
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:</code></pre>
+
+          <h2>3. Los 4 Comandos que Usarás el 90% del Tiempo</h2>
+          <ul>
+            <li><code>docker build -t mi-app .</code>: Construye la imagen local.</li>
+            <li><code>docker run -p 3000:3000 mi-app</code>: Ejecuta el contenedor asociando puertos.</li>
+            <li><code>docker-compose up -d</code>: Levanta todos los servicios en segundo plano.</li>
+            <li><code>docker ps</code>: Muestra los contenedores en ejecución y su consumo.</li>
+          </ul>
+        </div>
+
+        <div class="ad-slot-wrapper">
+          <span class="ad-label">Publicidad</span>
+          <div class="ad-box footer-banner" data-ad-slot="footer"></div>
+        </div>
+      </main>
+
+      <aside class="sidebar">
+        <div class="ad-slot-wrapper" style="margin-top: 0;">
+          <span class="ad-label">Publicidad</span>
+          <div class="ad-box sidebar-banner" data-ad-slot="sidebar"></div>
+        </div>
+
+        <div class="widget">
+          <h3 class="widget-title">Artículos Relacionados</h3>
+          <ul class="widget-list">
+            <li><a href="guia-git-comandos-avanzados-y-buenas-practicas.html">Git Avanzado y Conventional Commits</a></li>
+            <li><a href="seguridad-web-cabeceras-http-esenciales.html">Seguridad y Cabeceras HTTP</a></li>
+            <li><a href="como-elegir-hosting-web-rapido-seguro.html">Hosting Web y Servidores NVMe</a></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <p>&copy; 2026 BytePulse. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="../js/ads-config.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
