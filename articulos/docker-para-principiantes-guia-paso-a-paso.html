@@ -1,10 +1,13 @@
-Ôªø<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7959072629123030"
+     crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Docker para Principiantes: Gu√≠a Pr√°ctica de Contenedores y Compose - BytePulse</title>
-  <meta name="description" content="Aprende Docker desde cero con ejemplos reales: diferencias con m√°quinas virtuales, creaci√≥n de Dockerfiles eficientes, vol√∫menes de datos y docker-compose.">
+  <title>Docker para Principiantes: GuÌa Pr·ctica de Contenedores y Compose - BytePulse</title>
+  <meta name="description" content="Aprende Docker desde cero con ejemplos reales: diferencias con m·quinas virtuales, creaciÛn de Dockerfiles eficientes, vol˙menes de datos y docker-compose.">
   <link rel="canonical" href="https://bytepulse-tech.com/articulos/docker-para-principiantes-guia-paso-a-paso.html">
   <link rel="stylesheet" href="../css/style.css">
 
@@ -12,8 +15,8 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Docker para Principiantes: Gu√≠a Paso a Paso de Contenerizaci√≥n",
-    "description": "Tutorial integral de Docker para desarrolladores: sintaxis de Dockerfile, comandos de terminal y orquestaci√≥n ligera con docker-compose.",
+    "headline": "Docker para Principiantes: GuÌa Paso a Paso de ContenerizaciÛn",
+    "description": "Tutorial integral de Docker para desarrolladores: sintaxis de Dockerfile, comandos de terminal y orquestaciÛn ligera con docker-compose.",
     "author": {
       "@type": "Person",
       "name": "Alejandro S. Fuentes"
@@ -32,11 +35,14 @@
   <div id="reading-progress"></div>
 
   <header class="site-header">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7959072629123030"
+     crossorigin="anonymous"></script>
     <div class="container header-inner">
       <a href="../index.html" class="logo">
-        <div class="logo-icon">üõ°Ô∏è</div>`n        Byte<span>Pulse</span>
+        <div class="logo-icon">???</div>`n        Byte<span>Pulse</span>
       </a>
-      <button class="menu-toggle" aria-label="Abrir men√∫">‚ò∞</button>
+      <button class="menu-toggle" aria-label="Abrir men˙">?</button>
       <nav class="main-nav">
         <ul class="nav-links">
           <li><a href="../index.html">Inicio</a></li>
@@ -69,39 +75,42 @@
         </div>
 
         <header class="article-header">
-          <h1 class="article-title">Docker para Principiantes: C√≥mo Desplegar Aplicaciones en Contenedores sin Morir en el Intento</h1>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7959072629123030"
+     crossorigin="anonymous"></script>
+          <h1 class="article-title">Docker para Principiantes: CÛmo Desplegar Aplicaciones en Contenedores sin Morir en el Intento</h1>
           <div class="article-meta">
             <span>Por Alejandro S. Fuentes (DevOps & Web)</span>
-            <span>‚Ä¢</span>
+            <span>ï</span>
             <time datetime="2026-04-04">4 de abril de 2026</time>
-            <span>‚Ä¢</span>
+            <span>ï</span>
             <span>Lectura: 9 min</span>
           </div>
         </header>
 
-        <!-- Infograf√≠a Visual SVG -->
+        <!-- InfografÌa Visual SVG -->
         <div class="article-infographic">
           <svg viewBox="0 0 700 200" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
             <rect width="700" height="200" fill="#f8fafc" rx="10"/>
             <!-- VM -->
             <rect x="50" y="30" width="280" height="140" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" rx="8"/>
-            <text x="190" y="60" font-family="system-ui" font-size="15" font-weight="bold" fill="#0f172a" text-anchor="middle">üñ•Ô∏è M√°quina Virtual Cl√°sica</text>
-            <text x="70" y="90" font-family="system-ui" font-size="12" fill="#64748b">‚Ä¢ Sistema Operativo Invitado completo (GBs)</text>
-            <text x="70" y="115" font-family="system-ui" font-size="12" fill="#64748b">‚Ä¢ Arranque en minutos</text>
-            <text x="70" y="140" font-family="system-ui" font-size="12" fill="#ef4444" font-weight="600">‚Ä¢ Alto consumo de RAM y CPU</text>
+            <text x="190" y="60" font-family="system-ui" font-size="15" font-weight="bold" fill="#0f172a" text-anchor="middle">??? M·quina Virtual Cl·sica</text>
+            <text x="70" y="90" font-family="system-ui" font-size="12" fill="#64748b">ï Sistema Operativo Invitado completo (GBs)</text>
+            <text x="70" y="115" font-family="system-ui" font-size="12" fill="#64748b">ï Arranque en minutos</text>
+            <text x="70" y="140" font-family="system-ui" font-size="12" fill="#ef4444" font-weight="600">ï Alto consumo de RAM y CPU</text>
 
             <!-- Contenedor -->
             <rect x="370" y="30" width="280" height="140" fill="#ffffff" stroke="#6366f1" stroke-width="2" rx="8"/>
-            <text x="510" y="60" font-family="system-ui" font-size="15" font-weight="bold" fill="#4338ca" text-anchor="middle">üê≥ Contenedor Docker</text>
-            <text x="390" y="90" font-family="system-ui" font-size="12" fill="#334155">‚Ä¢ Comparte el Kernel del host (MBs)</text>
-            <text x="390" y="115" font-family="system-ui" font-size="12" fill="#334155">‚Ä¢ Arranque en milisegundos</text>
-            <text x="390" y="140" font-family="system-ui" font-size="12" fill="#10b981" font-weight="600">‚Ä¢ Aislamiento ligero y portable</text>
+            <text x="510" y="60" font-family="system-ui" font-size="15" font-weight="bold" fill="#4338ca" text-anchor="middle">?? Contenedor Docker</text>
+            <text x="390" y="90" font-family="system-ui" font-size="12" fill="#334155">ï Comparte el Kernel del host (MBs)</text>
+            <text x="390" y="115" font-family="system-ui" font-size="12" fill="#334155">ï Arranque en milisegundos</text>
+            <text x="390" y="140" font-family="system-ui" font-size="12" fill="#10b981" font-weight="600">ï Aislamiento ligero y portable</text>
           </svg>
-          <div class="article-infographic-caption">Figura: Arquitectura de virtualizaci√≥n pesada (Hipervisor) vs Contenerizaci√≥n ligera a nivel de proceso.</div>
+          <div class="article-infographic-caption">Figura: Arquitectura de virtualizaciÛn pesada (Hipervisor) vs ContenerizaciÛn ligera a nivel de proceso.</div>
         </div>
 
         <div class="article-body">
-          <p>La infame frase <em>¬´en mi m√°quina s√≠ funciona¬ª</em> ha sido hist√≥ricamente la pesadilla de cualquier equipo de desarrollo. Diferencias sutiles de versiones de librer√≠as, dependencias del sistema operativo o variables de entorno provocaban fallos al pasar c√≥digo a producci√≥n. Docker soluciona este problema empaquetando el c√≥digo junto a todas sus dependencias exactas en un contenedor estandarizado.</p>
+          <p>La infame frase <em>´en mi m·quina sÌ funcionaª</em> ha sido histÛricamente la pesadilla de cualquier equipo de desarrollo. Diferencias sutiles de versiones de librerÌas, dependencias del sistema operativo o variables de entorno provocaban fallos al pasar cÛdigo a producciÛn. Docker soluciona este problema empaquetando el cÛdigo junto a todas sus dependencias exactas en un contenedor estandarizado.</p>
 
           <div class="ad-slot-wrapper">
             <span class="ad-label">Publicidad</span>
@@ -109,7 +118,7 @@
           </div>
 
           <h2>1. Escribiendo tu Primer Dockerfile</h2>
-          <p>Un Dockerfile es la receta paso a paso para construir la imagen de tu aplicaci√≥n:</p>
+          <p>Un Dockerfile es la receta paso a paso para construir la imagen de tu aplicaciÛn:</p>
           <pre><code># Usar imagen ligera de Node.js
 FROM node:20-alpine
 
@@ -120,15 +129,15 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci --only=production
 
-# Copiar c√≥digo fuente y exponer puerto
+# Copiar cÛdigo fuente y exponer puerto
 COPY . .
 EXPOSE 3000
 
-# Comando de ejecuci√≥n
+# Comando de ejecuciÛn
 CMD ["node", "server.js"]</code></pre>
 
-          <h2>2. Orquestaci√≥n con docker-compose.yml</h2>
-          <p>Para levantar una aplicaci√≥n web junto con su base de datos (por ejemplo, Postgres o Redis) sin configurar nada a mano:</p>
+          <h2>2. OrquestaciÛn con docker-compose.yml</h2>
+          <p>Para levantar una aplicaciÛn web junto con su base de datos (por ejemplo, Postgres o Redis) sin configurar nada a mano:</p>
           <pre><code>version: '3.8'
 services:
   web:
@@ -147,12 +156,12 @@ services:
 volumes:
   pgdata:</code></pre>
 
-          <h2>3. Los 4 Comandos que Usar√°s el 90% del Tiempo</h2>
+          <h2>3. Los 4 Comandos que Usar·s el 90% del Tiempo</h2>
           <ul>
             <li><code>docker build -t mi-app .</code>: Construye la imagen local.</li>
             <li><code>docker run -p 3000:3000 mi-app</code>: Ejecuta el contenedor asociando puertos.</li>
             <li><code>docker-compose up -d</code>: Levanta todos los servicios en segundo plano.</li>
-            <li><code>docker ps</code>: Muestra los contenedores en ejecuci√≥n y su consumo.</li>
+            <li><code>docker ps</code>: Muestra los contenedores en ejecuciÛn y su consumo.</li>
           </ul>
         </div>
 
@@ -169,7 +178,7 @@ volumes:
         </div>
 
         <div class="widget">
-          <h3 class="widget-title">Art√≠culos Relacionados</h3>
+          <h3 class="widget-title">ArtÌculos Relacionados</h3>
           <ul class="widget-list">
             <li><a href="guia-git-comandos-avanzados-y-buenas-practicas.html">Git Avanzado y Conventional Commits</a></li>
             <li><a href="seguridad-web-cabeceras-http-esenciales.html">Seguridad y Cabeceras HTTP</a></li>

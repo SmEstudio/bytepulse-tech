@@ -1,10 +1,13 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7959072629123030"
+     crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Git Avanzado: Rebase Interactivo, Bisect, Reflog y Buenas PrÃ¡cticas - BytePulse</title>
-  <meta name="description" content="Domina las herramientas avanzadas de Git: rebase interactivo, git bisect para cazar bugs, recuperaciÃ³n con reflog y flujo de trabajo con Conventional Commits.">
+  <title>Git Avanzado: Rebase Interactivo, Bisect, Reflog y Buenas Prácticas - BytePulse</title>
+  <meta name="description" content="Domina las herramientas avanzadas de Git: rebase interactivo, git bisect para cazar bugs, recuperación con reflog y flujo de trabajo con Conventional Commits.">
   <link rel="canonical" href="https://bytepulse-tech.com/articulos/guia-git-comandos-avanzados-y-buenas-practicas.html">
   <link rel="stylesheet" href="../css/style.css">
 
@@ -12,8 +15,8 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Git Avanzado: Rebase Interactivo, Bisect, Reflog y Buenas PrÃ¡cticas Profesionales",
-    "description": "Tutorial tÃ©cnico sobre gestiÃ³n avanzada de repositorios Git, depuraciÃ³n de historiales y flujo de trabajo en equipo.",
+    "headline": "Git Avanzado: Rebase Interactivo, Bisect, Reflog y Buenas Prácticas Profesionales",
+    "description": "Tutorial técnico sobre gestión avanzada de repositorios Git, depuración de historiales y flujo de trabajo en equipo.",
     "author": {
       "@type": "Person",
       "name": "Alejandro S. Fuentes"
@@ -32,11 +35,14 @@
   <div id="reading-progress"></div>
 
   <header class="site-header">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7959072629123030"
+     crossorigin="anonymous"></script>
     <div class="container header-inner">
       <a href="../index.html" class="logo">
-        <div class="logo-icon">ğŸ›¡ï¸</div>`n        Byte<span>Pulse</span>
+        <div class="logo-icon">???</div>`n        Byte<span>Pulse</span>
       </a>
-      <button class="menu-toggle" aria-label="Abrir menÃº">â˜°</button>
+      <button class="menu-toggle" aria-label="Abrir menú">?</button>
       <nav class="main-nav">
         <ul class="nav-links">
           <li><a href="../index.html">Inicio</a></li>
@@ -69,17 +75,20 @@
         </div>
 
         <header class="article-header">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7959072629123030"
+     crossorigin="anonymous"></script>
           <h1 class="article-title">Git Avanzado: Rebase Interactivo, Bisect, Reflog y Conventional Commits</h1>
           <div class="article-meta">
             <span>Por Alejandro S. Fuentes (Ingeniero de Software)</span>
-            <span>â€¢</span>
+            <span>•</span>
             <time datetime="2026-04-03">3 de abril de 2026</time>
-            <span>â€¢</span>
+            <span>•</span>
             <span>Lectura: 10 min</span>
           </div>
         </header>
 
-        <!-- InfografÃ­a Visual SVG -->
+        <!-- Infografía Visual SVG -->
         <div class="article-infographic">
           <svg viewBox="0 0 700 200" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
             <rect width="700" height="200" fill="#0f172a" rx="10"/>
@@ -92,7 +101,7 @@
             <text x="180" y="115" font-family="monospace" font-size="12" fill="#fff" text-anchor="middle">fix</text>
             <circle cx="240" cy="110" r="18" fill="#ef4444"/>
             <text x="240" y="115" font-family="monospace" font-size="12" fill="#fff" text-anchor="middle">test</text>
-            <text x="180" y="155" font-family="monospace" font-size="12" fill="#94a3b8" text-anchor="middle">Commits caÃ³ticos (Squash)</text>
+            <text x="180" y="155" font-family="monospace" font-size="12" fill="#94a3b8" text-anchor="middle">Commits caóticos (Squash)</text>
 
             <path d="M 290 110 L 390 110" stroke="#6366f1" stroke-width="4" marker-end="url(#arrow)"/>
             <text x="340" y="95" font-family="monospace" font-size="14" fill="#a5b4fc" text-anchor="middle">SQUASH</text>
@@ -100,13 +109,13 @@
             <!-- Commit limpio -->
             <circle cx="500" cy="110" r="26" fill="#10b981"/>
             <text x="500" y="115" font-family="monospace" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">feat()</text>
-            <text x="500" y="155" font-family="monospace" font-size="12" fill="#34d399" text-anchor="middle">Commit SemÃ¡ntico AtÃ³mico</text>
+            <text x="500" y="155" font-family="monospace" font-size="12" fill="#34d399" text-anchor="middle">Commit Semántico Atómico</text>
           </svg>
-          <div class="article-infographic-caption">Figura: CompactaciÃ³n y limpieza de ramas de trabajo antes de fusionar a la rama principal (main).</div>
+          <div class="article-infographic-caption">Figura: Compactación y limpieza de ramas de trabajo antes de fusionar a la rama principal (main).</div>
         </div>
 
         <div class="article-body">
-          <p>La mayorÃ­a de programadores dominan el flujo bÃ¡sico: <code>git add</code>, <code>git commit</code> y <code>git push</code>. Sin embargo, en proyectos colaborativos de gran envergadura o en empresas con estÃ¡ndares estrictos de integraciÃ³n continua (CI/CD), la capacidad de mantener un Ã¡rbol de Git legible, atÃ³mico y libre de ruido es lo que distingue a un desarrollador senior.</p>
+          <p>La mayoría de programadores dominan el flujo básico: <code>git add</code>, <code>git commit</code> y <code>git push</code>. Sin embargo, en proyectos colaborativos de gran envergadura o en empresas con estándares estrictos de integración continua (CI/CD), la capacidad de mantener un árbol de Git legible, atómico y libre de ruido es lo que distingue a un desarrollador senior.</p>
 
           <div class="ad-slot-wrapper">
             <span class="ad-label">Publicidad</span>
@@ -114,39 +123,39 @@
           </div>
 
           <h2>1. Rebase Interactivo: git rebase -i</h2>
-          <p>Permite reescribir los Ãºltimos commits antes de abrir una Pull Request. Puedes fusionar commits provisionales (Â«fix typoÂ», Â«wipÂ») mediante <code>squash</code> o <code>fixup</code>:</p>
-          <pre><code># Revisa y reorganiza los Ãºltimos 3 commits
+          <p>Permite reescribir los últimos commits antes de abrir una Pull Request. Puedes fusionar commits provisionales («fix typo», «wip») mediante <code>squash</code> o <code>fixup</code>:</p>
+          <pre><code># Revisa y reorganiza los últimos 3 commits
 git rebase -i HEAD~3
 
-# En el editor que se abrirÃ¡:
+# En el editor que se abrirá:
 # pick a1b2c3d feat: agregar autenticacion oauth2
 # squash e4f5g6h fix: corregir typo en token
 # squash i7j8k9l test: agregar pruebas unitarias</code></pre>
 
-          <h2>2. Encontrar Bugs HistÃ³ricos con git bisect</h2>
-          <p>Â¿Tu aplicaciÃ³n falla en producciÃ³n pero no sabes quÃ© commit de los Ãºltimos 200 introdujo el error? <code>git bisect</code> ejecuta una bÃºsqueda binaria algorÃ­tmica:</p>
+          <h2>2. Encontrar Bugs Históricos con git bisect</h2>
+          <p>¿Tu aplicación falla en producción pero no sabes qué commit de los últimos 200 introdujo el error? <code>git bisect</code> ejecuta una búsqueda binaria algorítmica:</p>
           <pre><code>git bisect start
 git bisect bad                 # El commit actual tiene el bug
-git bisect good v1.4.0         # La versiÃ³n v1.4.0 funcionaba correctamente
-# Git irÃ¡ alternando commits y preguntÃ¡ndote hasta seÃ±alar al culpable exacto.</code></pre>
+git bisect good v1.4.0         # La versión v1.4.0 funcionaba correctamente
+# Git irá alternando commits y preguntándote hasta señalar al culpable exacto.</code></pre>
 
           <h2>3. git reflog: Tu Red de Seguridad ante Desastres</h2>
-          <p>Si alguna vez ejecutaste por error <code>git reset --hard</code> o borraste una rama que aÃºn no habÃ­as subido, no entres en pÃ¡nico. Git guarda un registro local de cada movimiento del puntero HEAD en el <strong>reflog</strong> durante 30 a 90 dÃ­as:</p>
+          <p>Si alguna vez ejecutaste por error <code>git reset --hard</code> o borraste una rama que aún no habías subido, no entres en pánico. Git guarda un registro local de cada movimiento del puntero HEAD en el <strong>reflog</strong> durante 30 a 90 días:</p>
           <pre><code>git reflog
 # Localiza el hash anterior al error (ej. HEAD@{2})
 git reset --hard HEAD@{2}</code></pre>
 
           <div class="faq-accordion">
             <div class="faq-item">
-              <button class="faq-question">Â¿CuÃ¡ndo NO se debe hacer git rebase?</button>
+              <button class="faq-question">¿Cuándo NO se debe hacer git rebase?</button>
               <div class="faq-answer">
-                Nunca hagas rebase en ramas pÃºblicas compartidas (como <code>main</code> o <code>develop</code>) donde otros compaÃ±eros ya hayan descargado commits, ya que alterarÃ¡s los hashes histÃ³ricos forzando conflictos masivos.
+                Nunca hagas rebase en ramas públicas compartidas (como <code>main</code> o <code>develop</code>) donde otros compañeros ya hayan descargado commits, ya que alterarás los hashes históricos forzando conflictos masivos.
               </div>
             </div>
             <div class="faq-item">
-              <button class="faq-question">Â¿QuÃ© son los Conventional Commits?</button>
+              <button class="faq-question">¿Qué son los Conventional Commits?</button>
               <div class="faq-answer">
-                Un estÃ¡ndar de nomenclatura de mensajes (ej. <code>feat:</code>, <code>fix:</code>, <code>docs:</code>, <code>refactor:</code>) que permite generar changelogs automÃ¡ticos y determinar versiones semÃ¡nticas (SemVer) sin intervenciÃ³n manual.
+                Un estándar de nomenclatura de mensajes (ej. <code>feat:</code>, <code>fix:</code>, <code>docs:</code>, <code>refactor:</code>) que permite generar changelogs automáticos y determinar versiones semánticas (SemVer) sin intervención manual.
               </div>
             </div>
           </div>

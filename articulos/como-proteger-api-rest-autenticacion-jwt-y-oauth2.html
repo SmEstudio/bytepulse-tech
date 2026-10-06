@@ -1,10 +1,13 @@
-Ôªø<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7959072629123030"
+     crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seguridad en APIs REST: Autenticaci√≥n con JWT, Tokens de Refresco y Rate Limiting - BytePulse</title>
-  <meta name="description" content="Aprende a proteger tus APIs REST contra vulnerabilidades cr√≠ticas: implementaci√≥n de JSON Web Tokens (JWT), rotaci√≥n de refresh tokens en cookies HttpOnly y rate limiting.">
+  <title>Seguridad en APIs REST: AutenticaciÛn con JWT, Tokens de Refresco y Rate Limiting - BytePulse</title>
+  <meta name="description" content="Aprende a proteger tus APIs REST contra vulnerabilidades crÌticas: implementaciÛn de JSON Web Tokens (JWT), rotaciÛn de refresh tokens en cookies HttpOnly y rate limiting.">
   <link rel="canonical" href="https://bytepulse-tech.com/articulos/como-proteger-api-rest-autenticacion-jwt-y-oauth2.html">
   <link rel="stylesheet" href="../css/style.css">
 
@@ -12,11 +15,11 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Seguridad en APIs REST: Arquitectura de Autenticaci√≥n con JWT y OAuth2",
-    "description": "Patrones de dise√±o de ciberseguridad para servicios web y microservicios basados en tokens de acceso criptogr√°ficos.",
+    "headline": "Seguridad en APIs REST: Arquitectura de AutenticaciÛn con JWT y OAuth2",
+    "description": "Patrones de diseÒo de ciberseguridad para servicios web y microservicios basados en tokens de acceso criptogr·ficos.",
     "author": {
       "@type": "Person",
-      "name": "Sara Dom√≠nguez"
+      "name": "Sara DomÌnguez"
     },
     "publisher": {
       "@type": "Organization",
@@ -32,11 +35,14 @@
   <div id="reading-progress"></div>
 
   <header class="site-header">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7959072629123030"
+     crossorigin="anonymous"></script>
     <div class="container header-inner">
       <a href="../index.html" class="logo">
-        <div class="logo-icon">üõ°Ô∏è</div>`n        Byte<span>Pulse</span>
+        <div class="logo-icon">???</div>`n        Byte<span>Pulse</span>
       </a>
-      <button class="menu-toggle" aria-label="Abrir men√∫">‚ò∞</button>
+      <button class="menu-toggle" aria-label="Abrir men˙">?</button>
       <nav class="main-nav">
         <ul class="nav-links">
           <li><a href="../index.html">Inicio</a></li>
@@ -69,21 +75,24 @@
         </div>
 
         <header class="article-header">
-          <h1 class="article-title">Seguridad en APIs REST: Gu√≠a Definitiva de Autenticaci√≥n con JWT, Refresh Tokens y Rate Limiting</h1>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7959072629123030"
+     crossorigin="anonymous"></script>
+          <h1 class="article-title">Seguridad en APIs REST: GuÌa Definitiva de AutenticaciÛn con JWT, Refresh Tokens y Rate Limiting</h1>
           <div class="article-meta">
-            <span>Por Sara Dom√≠nguez (Ciberseguridad de Software)</span>
-            <span>‚Ä¢</span>
+            <span>Por Sara DomÌnguez (Ciberseguridad de Software)</span>
+            <span>ï</span>
             <time datetime="2026-04-05">5 de abril de 2026</time>
-            <span>‚Ä¢</span>
+            <span>ï</span>
             <span>Lectura: 9 min</span>
           </div>
         </header>
 
-        <!-- Infograf√≠a Visual SVG -->
+        <!-- InfografÌa Visual SVG -->
         <div class="article-infographic">
           <svg viewBox="0 0 700 200" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
             <rect width="700" height="200" fill="#0f172a" rx="10"/>
-            <text x="350" y="35" font-family="monospace" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">Flujo de Autenticaci√≥n de Tokens Dobles (Access + Refresh)</text>
+            <text x="350" y="35" font-family="monospace" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">Flujo de AutenticaciÛn de Tokens Dobles (Access + Refresh)</text>
             
             <rect x="50" y="65" width="160" height="90" fill="#1e293b" stroke="#38bdf8" rx="6"/>
             <text x="130" y="95" font-family="system-ui" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">Cliente Web</text>
@@ -94,30 +103,30 @@
 
             <rect x="490" y="65" width="160" height="90" fill="#1e293b" stroke="#10b981" rx="6"/>
             <text x="570" y="95" font-family="system-ui" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">Servidor API</text>
-            <text x="570" y="120" font-family="monospace" font-size="11" fill="#34d399" text-anchor="middle">Firma Asim√©trica RS256</text>
+            <text x="570" y="120" font-family="monospace" font-size="11" fill="#34d399" text-anchor="middle">Firma AsimÈtrica RS256</text>
           </svg>
-          <div class="article-infographic-caption">Figura: Arquitectura segura de tokens con corta duraci√≥n (15 min) y renovaci√≥n protegida contra XSS y CSRF.</div>
+          <div class="article-infographic-caption">Figura: Arquitectura segura de tokens con corta duraciÛn (15 min) y renovaciÛn protegida contra XSS y CSRF.</div>
         </div>
 
         <div class="article-body">
-          <p>Con la consolidaci√≥n de las arquitecturas SPA (Single Page Applications) y aplicaciones m√≥viles, las APIs REST son el coraz√≥n neur√°lgico de cualquier servicio moderno. Sin embargo, los errores en la gesti√≥n de tokens de sesi√≥n son una de las principales puertas de entrada para brechas de datos masivas seg√∫n el top 10 de OWASP para APIs.</p>
+          <p>Con la consolidaciÛn de las arquitecturas SPA (Single Page Applications) y aplicaciones mÛviles, las APIs REST son el corazÛn neur·lgico de cualquier servicio moderno. Sin embargo, los errores en la gestiÛn de tokens de sesiÛn son una de las principales puertas de entrada para brechas de datos masivas seg˙n el top 10 de OWASP para APIs.</p>
 
           <div class="ad-slot-wrapper">
             <span class="ad-label">Publicidad</span>
             <div class="ad-box in-article-banner" data-ad-slot="inArticle"></div>
           </div>
 
-          <h2>1. El Error Cr√≠tico: Guardar JWTs en localStorage</h2>
-          <p>Almacenar tokens de autenticaci√≥n en el <code>localStorage</code> o <code>sessionStorage</code> del navegador expone la sesi√≥n a cualquier script malicioso ejecutado a trav√©s de una vulnerabilidad <strong>Cross-Site Scripting (XSS)</strong>. El token de refresco debe guardarse siempre en una <strong>cookie con atributos HttpOnly, Secure y SameSite=Strict</strong>, la cual es invisible e inaccesible para JavaScript.</p>
+          <h2>1. El Error CrÌtico: Guardar JWTs en localStorage</h2>
+          <p>Almacenar tokens de autenticaciÛn en el <code>localStorage</code> o <code>sessionStorage</code> del navegador expone la sesiÛn a cualquier script malicioso ejecutado a travÈs de una vulnerabilidad <strong>Cross-Site Scripting (XSS)</strong>. El token de refresco debe guardarse siempre en una <strong>cookie con atributos HttpOnly, Secure y SameSite=Strict</strong>, la cual es invisible e inaccesible para JavaScript.</p>
 
           <h2>2. Estrategia de Doble Token (Access Token + Refresh Token)</h2>
           <ul>
-            <li><strong>Access Token (Corta duraci√≥n: 10-15 minutos):</strong> Se transmite en la cabecera <code>Authorization: Bearer &lt;token&gt;</code> para autorizar peticiones r√°pidas sin consultar la base de datos cada vez.</li>
-            <li><strong>Refresh Token (Larga duraci√≥n: 7 a 30 d√≠as):</strong> Almacenado en cookie segura. Permite solicitar un nuevo access token de forma transparente cuando el anterior expira.</li>
+            <li><strong>Access Token (Corta duraciÛn: 10-15 minutos):</strong> Se transmite en la cabecera <code>Authorization: Bearer &lt;token&gt;</code> para autorizar peticiones r·pidas sin consultar la base de datos cada vez.</li>
+            <li><strong>Refresh Token (Larga duraciÛn: 7 a 30 dÌas):</strong> Almacenado en cookie segura. Permite solicitar un nuevo access token de forma transparente cuando el anterior expira.</li>
           </ul>
 
-          <h2>3. Rate Limiting: Freno al Brute Force y Denegaci√≥n de Servicio</h2>
-          <p>Todo endpoint de login y recuperaci√≥n de contrase√±a debe limitar las peticiones por direcci√≥n IP o usuario (por ejemplo, m√°ximo 5 intentos por minuto) mediante algoritmos de <em>Token Bucket</em> implementados en Redis o en Nginx.</p>
+          <h2>3. Rate Limiting: Freno al Brute Force y DenegaciÛn de Servicio</h2>
+          <p>Todo endpoint de login y recuperaciÛn de contraseÒa debe limitar las peticiones por direcciÛn IP o usuario (por ejemplo, m·ximo 5 intentos por minuto) mediante algoritmos de <em>Token Bucket</em> implementados en Redis o en Nginx.</p>
         </div>
 
         <div class="ad-slot-wrapper">
